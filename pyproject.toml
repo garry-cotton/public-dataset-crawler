@@ -1,0 +1,60 @@
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["crawler*"]
+
+[project]
+name = "public-dataset-crawler"
+version = "1.0.0"
+authors = [
+    { name ="Garry Cotton", email="garry.s.cotton@gmail.com"}    
+]
+
+description = "Basic configurable web crawler for collecting public datasets."
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.8"
+
+dependencies = [
+  "rarfile",
+  "tqdm",
+  "requests",
+  "beautifulsoup4",
+  "openpyxl",
+  "lxml",
+  "playwright"
+]
+
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-benchmark",
+    "ruff"    
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.pytest-benchmark]
+min_rounds = 5
+sort = "mean"
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W"]
+ignore = ["W293", "E722"]
+
+# optionally:   "nbstripout"
+
+[project.urls]
+Repository = "https://github.com/garry-cotton/public-dataset-crawler"
