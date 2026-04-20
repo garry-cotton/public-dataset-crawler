@@ -51,7 +51,7 @@ Notes on Google Sheets:
 from __future__ import annotations
 
 import argparse
-import os
+import subprocess
 
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence
@@ -207,7 +207,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     
     # Shutdown the machine after completing the task if required.
     if args.shutdown_on_completion:
-        os.system("shutdown /s /t 30")
+        subprocess.run(["shutdown", "/s", "/t", "30"])
 
     return exit_code
 
